@@ -20,9 +20,10 @@ jobs:
     name: Run Playbook
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout code
+      uses: actions/checkout@main
     - name: Install Galaxy requirements
       run: |
-        ls -lah ./
         # Update token in ansible cfg, it expires every 30 days and the refresh should be automated
         sed -i "s#token = <REPLACED_WITH_SECRET>#token = ${{ inputs.RedHatAutomationHubToken }}#g" ansible.cfg
         # Install collections
