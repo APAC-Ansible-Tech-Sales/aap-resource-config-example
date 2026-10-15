@@ -1,5 +1,5 @@
 name: AAP Resource Config
-run-name: AAP - ${{ inputs.components }}
+run-name: AAP - ${{ inputs.resources }}
 
 on:
   workflow_dispatch:
