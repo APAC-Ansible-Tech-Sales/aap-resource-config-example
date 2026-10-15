@@ -1,0 +1,61 @@
+controller_templates:
+  - name: "Template 1"
+    project: Template 1
+    organization: Default
+    playbook: playbooks/main.yml
+    description: Template 1
+    state: present
+    verbosity: 0
+    ask_limit_on_launch: yes
+    ask_variables_on_launch: yes
+    ask_tags_on_launch: true
+    ask_inventory_on_launch: true
+    execution_environment: ansible_core_2.15:2.0.0
+  - name: Template 2
+    project: Template 2
+    playbook: playbooks/main.yml
+    credentials: []
+    description: Template 2
+    state: present
+    survey_enabled: true
+    verbosity: 0
+    inventory: local_inventory
+    limit: localhost
+    ask_credential_on_launch: true
+    ask_limit_on_launch: false
+    ask_variables_on_launch: false
+    ask_tags_on_launch: false
+    ask_inventory_on_launch: false
+    organization: Default
+    execution_environment: ansible_core_2.15:2.0.0
+    allow_simultaneous: false
+    ask_job_type_on_launch: false
+    survey_spec:
+      name: ""
+      description: ""
+      spec: [
+        {
+          "max": 1024,
+          "min": 5,
+          "type": "text",
+          "choices": [],
+          "default": "",
+          "required": true,
+          "variable": "deploy_result_status",
+          "new_question": true,
+          "question_name": "Deployment result",
+          "question_description": "What was the deployment result?"
+        },
+        {
+          "max": 1024,
+          "min": 5,
+          "type": "text",
+          "choices": [],
+          "default": "",
+          "required": true,
+          "variable": "test_result_status",
+          "new_question": true,
+          "question_name": "Testing result",
+          "question_description": "What was the testing result?"
+        }
+      ]

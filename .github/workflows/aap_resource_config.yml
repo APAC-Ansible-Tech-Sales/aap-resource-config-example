@@ -1,0 +1,39 @@
+name: AAP Resource Config
+run-name: AAP - ${{ inputs.components }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      resources:
+        description: 'Components to deploy'
+        required: true
+        type: string
+        default: '[
+          "controller_projects",
+          "controller_credentials",
+          "controller_templates",
+          "controller_schedules"
+          ]'
+
+jobs:
+  playbook:
+    name: Run Playbook
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Galaxy requirements
+      run: |
+        # Update token in ansible cfg, it expires every 30 days and the refresh should be automated
+        sed -i "s#token = <REPLACED_WITH_SECRET>#token = ${{ inputs.RedHatAutomationHubToken }}#g" ${{ github.workspace }}/playbooks/ansible.cfg
+        # Install collections
+        ansible-galaxy collection install infra.aap_configuration
+      shell: bash
+      working-directory: ${{ github.workspace }}
+
+    - name: Configure Resources
+      run: |
+        ansible-playbook playbooks/main.yml \
+        --extra-vars "aap_hostname=https://${{ vars.AAP_HOSTNAME }}" \
+        --extra-vars='{\"resources\": ${{ inputs.resources }}}' \
+        --vault-password-file <(cat <<<"${{ secrets.ANSIBLE_VAULT }}")
+      shell: bash
+      working-directory: ${{ github.workspace }}
