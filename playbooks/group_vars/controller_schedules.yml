@@ -4,5 +4,8 @@ controller_schedules:
     organization: Default
     state: present
     enabled: false
-    unified_job_template: "Template 1"
+    unified_job_template: "Template 2"
     rrule: "DTSTART;TZID=Pacific/Auckland:20240320T163000 RRULE:INTERVAL=1;FREQ=WEEKLY;BYSETPOS=1;BYDAY=MO"
+    extra_data:
+      tenant_id: "1234567890"
+      client_id: "1234567890"
