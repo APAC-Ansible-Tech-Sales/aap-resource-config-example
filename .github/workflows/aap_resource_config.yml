@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       resources:
-        description: 'Components to deploy'
+        description: 'Resources to deploy'
         required: true
         type: string
         default: '[
