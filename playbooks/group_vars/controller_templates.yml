@@ -1,8 +1,8 @@
 controller_templates:
   - name: "Template 1"
-    project: Template 1
+    project: ansible-collection-example
     organization: Default
-    playbook: playbooks/main.yml
+    playbook: playbooks/get_access_token.yml
     description: Template 1
     state: present
     verbosity: 0
@@ -10,16 +10,16 @@ controller_templates:
     ask_variables_on_launch: yes
     ask_tags_on_launch: true
     ask_inventory_on_launch: true
-    execution_environment: ansible_core_2.15:2.0.0
+    execution_environment: Default execution environment
   - name: Template 2
-    project: Template 2
-    playbook: playbooks/main.yml
+    project: ansible-collection-example
+    playbook: playbooks/get_access_token.yml
     credentials: []
     description: Template 2
     state: present
     survey_enabled: true
     verbosity: 0
-    inventory: local_inventory
+    inventory: Demo Inventory
     limit: localhost
     ask_credential_on_launch: true
     ask_limit_on_launch: false
@@ -27,7 +27,7 @@ controller_templates:
     ask_tags_on_launch: false
     ask_inventory_on_launch: false
     organization: Default
-    execution_environment: ansible_core_2.15:2.0.0
+    execution_environment: Default execution environment
     allow_simultaneous: false
     ask_job_type_on_launch: false
     survey_spec:
@@ -41,10 +41,10 @@ controller_templates:
           "choices": [],
           "default": "",
           "required": true,
-          "variable": "deploy_result_status",
+          "variable": "variable_1",
           "new_question": true,
-          "question_name": "Deployment result",
-          "question_description": "What was the deployment result?"
+          "question_name": "Question 1",
+          "question_description": "Question 1 description"
         },
         {
           "max": 1024,
@@ -53,9 +53,9 @@ controller_templates:
           "choices": [],
           "default": "",
           "required": true,
-          "variable": "test_result_status",
+          "variable": "variable_2",
           "new_question": true,
-          "question_name": "Testing result",
-          "question_description": "What was the testing result?"
+          "question_name": "Question 2",
+          "question_description": "Question 2 description"
         }
       ]

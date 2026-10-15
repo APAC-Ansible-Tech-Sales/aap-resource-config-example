@@ -3,6 +3,6 @@ controller_schedules:
     description: Schedule 1
     organization: Default
     state: present
-    enabled: true
-    unified_job_template: "Schedule 1"
+    enabled: false
+    unified_job_template: "Template 1"
     rrule: "DTSTART;TZID=Pacific/Auckland:20240320T163000 RRULE:INTERVAL=1;FREQ=WEEKLY;BYSETPOS=1;BYDAY=MO"
