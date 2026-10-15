@@ -13,6 +13,7 @@ controller_templates:
     execution_environment: Default execution environment
   - name: Template 2
     project: ansible-collection-example
+    organization: Default
     playbook: playbooks/get_access_token.yml
     credentials: []
     description: Template 2
@@ -26,7 +27,6 @@ controller_templates:
     ask_variables_on_launch: false
     ask_tags_on_launch: false
     ask_inventory_on_launch: false
-    organization: Default
     execution_environment: Default execution environment
     allow_simultaneous: false
     ask_job_type_on_launch: false
