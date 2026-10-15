@@ -37,7 +37,7 @@ jobs:
       run: |
         ansible-playbook playbooks/main.yml \
         --extra-vars "aap_hostname=https://${{ vars.AAP_HOSTNAME }}" \
-        --extra-vars '{"resources": ${{ fromJson(inputs.resources) }}}' \
+        --extra-vars '{"resources": ${{ inputs.resources }}}' \
         --vault-password-file <(cat <<<"${{ secrets.ANSIBLE_VAULT }}")
       shell: bash
       working-directory: ${{ github.workspace }}
