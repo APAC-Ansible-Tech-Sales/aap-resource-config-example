@@ -7,14 +7,14 @@
     ansible_connection: local
     aap_username: admin
     aap_hostname: "{{ aap_hostname }}" # From GitHub Vars
-    aap_password: "{{ aap_password }}" # From playbooks/group_vars/all/variables_vault.yml # It will be better to use a short lived token here for production clusters.
+    aap_password: "{{ aap_password }}" # From playbooks/group_vars/localhost/variables_vault.yml # It will be better to use a short lived token here for production clusters.
     aap_validate_certs: "{{ validate_certs | default(true) }}"
   tasks:
     - name: Import variables
       ansible.builtin.include_vars:
         file: "{{ item }}"
       loop:
-        - group_vars/all/vault.yml
+        - group_vars/localhost/vault.yml
 
     - name: Import Resource Variables
       ansible.builtin.include_vars:

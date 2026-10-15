@@ -17,7 +17,7 @@ You choose which resource types to deploy by passing a `resources` list. Each en
 | `controller_templates` | `group_vars/controller_templates.yml` | Job templates (playbooks, surveys, launch prompts) |
 | `controller_schedules` | `group_vars/controller_schedules.yml` | Recurring schedules for job templates |
 
-Edit the corresponding vars file to change what gets applied. Sensitive values (such as the AAP password) live in the Ansible Vault file at `playbooks/group_vars/all/vault.yml`.
+Edit the corresponding vars file to change what gets applied. Sensitive values (such as the AAP password) live in the Ansible Vault file at `playbooks/group_vars/localhost/vault.yml`.
 
 ## How it runs
 
