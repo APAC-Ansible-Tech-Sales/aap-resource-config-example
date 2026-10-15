@@ -20,8 +20,10 @@ jobs:
     name: Run Playbook
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
+    - name: Checkout Repository
       uses: actions/checkout@main
+      with:
+        fetch-depth: 0
     - name: Install Galaxy requirements
       run: |
         # Update token in ansible cfg, it expires every 30 days and the refresh should be automated
