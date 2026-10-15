@@ -6,3 +6,6 @@ controller_schedules:
     enabled: false
     unified_job_template: "Template 2"
     rrule: "DTSTART;TZID=Pacific/Auckland:20240320T163000 RRULE:INTERVAL=1;FREQ=WEEKLY;BYSETPOS=1;BYDAY=MO"
+    extra_vars:
+      tenant_id: "1234567890"
+      client_id: "1234567890"
