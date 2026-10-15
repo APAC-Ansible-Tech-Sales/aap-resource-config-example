@@ -16,7 +16,7 @@
       loop:
         - group_vars/all/vault.yml
 
-    - name: Import resource variables
+    - name: Import Resource Variables
       ansible.builtin.include_vars:
         file: "group_vars/{{ item }}.yml"
       loop: "{{ resources }}"
