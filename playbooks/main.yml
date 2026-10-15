@@ -1,0 +1,26 @@
+---
+- name: Configure Resources
+  hosts: localhost
+  gather_facts: false
+  vars:
+    controller_configuration_credentials_secure_logging: true
+    ansible_connection: local
+    aap_username: admin
+    aap_hostname: "{{ aap_hostname }}" # From GitHub Vars
+    aap_password: "{{ aap_password }}" # From playbooks/group_vars/all/variables_vault.yml # It will be better to use a short lived token here for production clusters.
+    aap_validate_certs: "{{ validate_certs | default(true) }}"
+  tasks:
+    - name: Import variables
+      ansible.builtin.include_vars:
+        file: "{{ item }}"
+      loop:
+        - group_vars/all/vault.yml
+
+    - name: Import resource variables
+      ansible.builtin.include_vars:
+        file: "group_vars/{{ item }}.yml"
+      loop: "{{ resources }}"
+
+    - name: Include Dispatch Role
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.dispatch

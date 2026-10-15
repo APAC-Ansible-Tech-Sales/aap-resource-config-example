@@ -1,0 +1,61 @@
+controller_templates:
+  - name: "Template 1"
+    project: ansible-collection-example
+    organization: Default
+    playbook: playbooks/get_access_token.yml
+    description: Template 1
+    state: present
+    verbosity: 0
+    ask_limit_on_launch: yes
+    ask_variables_on_launch: yes
+    ask_tags_on_launch: true
+    ask_inventory_on_launch: true
+    execution_environment: Default execution environment
+  - name: Template 2
+    project: ansible-collection-example
+    playbook: playbooks/get_access_token.yml
+    credentials: []
+    description: Template 2
+    state: present
+    survey_enabled: true
+    verbosity: 0
+    inventory: Demo Inventory
+    limit: localhost
+    ask_credential_on_launch: true
+    ask_limit_on_launch: false
+    ask_variables_on_launch: false
+    ask_tags_on_launch: false
+    ask_inventory_on_launch: false
+    organization: Default
+    execution_environment: Default execution environment
+    allow_simultaneous: false
+    ask_job_type_on_launch: false
+    survey_spec:
+      name: ""
+      description: ""
+      spec: [
+        {
+          "max": 1024,
+          "min": 5,
+          "type": "text",
+          "choices": [],
+          "default": "",
+          "required": true,
+          "variable": "variable_1",
+          "new_question": true,
+          "question_name": "Question 1",
+          "question_description": "Question 1 description"
+        },
+        {
+          "max": 1024,
+          "min": 5,
+          "type": "text",
+          "choices": [],
+          "default": "",
+          "required": true,
+          "variable": "variable_2",
+          "new_question": true,
+          "question_name": "Question 2",
+          "question_description": "Question 2 description"
+        }
+      ]

@@ -1,0 +1,10 @@
+controller_projects:
+  - name: "ansible-collection-example"
+    description: Example collection that has a playbook
+    organization: Default
+    scm_url: https://github.com/APAC-Ansible-Tech-Sales/ansible-collection-example
+    scm_branch: main
+    scm_clean: true
+    scm_type: git
+    scm_update_on_launch: true
+    default_environment: Default execution environment
