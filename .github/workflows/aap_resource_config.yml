@@ -28,6 +28,7 @@ jobs:
       run: |
         # Update token in ansible cfg, it expires every 30 days and the refresh should be automated
         sed -i "s#token = <REPLACED_WITH_SECRET>#token = ${{ inputs.RedHatAutomationHubToken }}#g" ansible.cfg
+        cat ansible.cfg
         # Install collections
         ansible-galaxy collection install infra.aap_configuration
       shell: bash
