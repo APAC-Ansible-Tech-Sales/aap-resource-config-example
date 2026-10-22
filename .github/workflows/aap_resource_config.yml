@@ -26,7 +26,14 @@ jobs:
         fetch-depth: 0
     - name: Install Galaxy requirements
       env:
-        ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_TOKEN: ${{ secrets.REDHATAUTOMATIONHUBTOKEN }}
+        ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_CERTIFIED_URL: https://console.redhat.com/api/automation-hub/content/published/
+        ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_CERTIFIED_AUTH_URL: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+        ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_CERTIFIED_TOKEN: ${{ secrets.REDHATAUTOMATIONHUBTOKEN }}
+        # ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_URL: https://console.redhat.com/api/automation-hub/content/validated/
+        # ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_AUTH_URL: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+        # ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_TOKEN: ${{ secrets.REDHATAUTOMATIONHUBTOKEN }}
+        ANSIBLE_GALAXY_SERVER_UPSTREAM_GALAXY_URL: https://galaxy.ansible.com
+        ANSIBLE_GALAXY_SERVER_LIST: automation_hub_certified,upstream_galaxy
       run: |
         ansible-galaxy collection install ansible.controller infra.aap_configuration
       shell: bash
