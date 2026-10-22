@@ -28,7 +28,7 @@ jobs:
       env:
         ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_TOKEN: ${{ secrets.REDHATAUTOMATIONHUBTOKEN }}
       run: |
-        ansible-galaxy collection install infra.aap_configuration
+        ansible-galaxy collection install ansible.controller infra.aap_configuration
       shell: bash
       working-directory: ${{ github.workspace }}
 
