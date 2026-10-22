@@ -25,10 +25,9 @@ jobs:
       with:
         fetch-depth: 0
     - name: Install Galaxy requirements
+      env:
+        ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_VALIDATED_TOKEN: ${{ secrets.REDHATAUTOMATIONHUBTOKEN }}
       run: |
-        # Update token in ansible cfg, it expires every 30 days and the refresh should be automated
-        sed -i "s#token = <REPLACED_WITH_SECRET>#token = ${{ secrets.REDHATAUTOMATIONHUBOFFLINETOKEN }}#g" ansible.cfg
-        # Install collections
         ansible-galaxy collection install infra.aap_configuration
       shell: bash
       working-directory: ${{ github.workspace }}
